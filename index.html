@@ -5,199 +5,109 @@
   <title>Minecraft Staff Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    /* Reset & base */
-    * {
-      box-sizing: border-box;
-      margin: 0; padding: 0;
+    /* ... (Mantieni tutto il CSS precedente) ... */
+
+    /* Contenitore per esperienza + popup */
+    .experience-container {
+      position: relative;
+      display: flex;
+      gap: 1rem;
     }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #0a0a0a; /* sfondo molto scuro */
-      color: #e0e0e0;
-      line-height: 1.6;
-      scroll-behavior: smooth;
+
+    /* Lista esperienza più stretta per fare spazio a popup */
+    .experience-list {
+      flex: 1;
+      max-width: 600px;
+      overflow-y: auto;
     }
-    a {
-      color: #4fc3f7; /* azzurro chiaro */
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    /* Navbar fissa */
-    nav {
+
+    /* Popup esperienza dettagliata (inizialmente nascosto) */
+    .popup {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: #121212;
-      padding: 1rem 2rem;
+      top: 80px; /* sotto navbar */
+      right: 0;
+      width: 350px;
+      max-width: 90vw;
+      height: calc(100vh - 80px);
+      background-color: #222;
+      box-shadow: -5px 0 15px rgba(0,0,0,0.7);
+      padding: 1.5rem;
+      color: white;
+      font-size: 0.95rem;
+      overflow-y: auto;
+      transform: translateX(100%);
+      transition: transform 0.4s ease;
+      z-index: 1100;
+      border-left: 4px solid #4fc3f7;
+      border-radius: 0 0 0 8px;
+    }
+    .popup.active {
+      transform: translateX(0);
+    }
+
+    .popup-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.8);
-      z-index: 1000;
+      margin-bottom: 1rem;
     }
-    nav .logo {
-      font-weight: 700;
-      font-size: 1.5rem;
-      letter-spacing: 2px;
-      color: #4fc3f7;
-      user-select: none;
+    .popup-header h3 {
+      margin: 0;
+      font-size: 1.2rem;
     }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-    }
-    nav ul li {
-      font-weight: 600;
+    .popup-close {
       cursor: pointer;
-      color: #4fc3f7;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ddd;
+      user-select: none;
       transition: color 0.3s ease;
     }
-    nav ul li:hover {
-      color: #81d4fa; /* azzurro più chiaro al passaggio */
-    }
-    nav ul li a {
-      color: inherit;
-      text-decoration: none;
+    .popup-close:hover {
+      color: #f44336; /* rosso */
     }
 
-    /* Padding per contenuto sotto navbar */
-    main {
-      padding-top: 80px; /* spazio per navbar */
-      max-width: 900px;
-      margin: 0 auto 4rem;
-      padding-left: 1rem;
-      padding-right: 1rem;
+    /* Cambia colore testo server quando popup attivo */
+    .experience-list li.active-server {
+      color: #555 !important; /* più scuro */
+      transition: color 0.4s ease;
     }
-    /* Sezioni */
-    section {
-      margin-bottom: 4rem;
+
+    /* Cambiare il bordo sinistro popup in base al server */
+    .popup.icenetwork {
+      border-left-color: #81d4fa;
+      background-color: #123344;
     }
-    section h2 {
-      font-size: 2rem;
-      border-bottom: 3px solid #4fc3f7;
-      padding-bottom: 0.3rem;
-      margin-bottom: 1.5rem;
-      font-weight: 700;
+    .popup.atlasmc {
+      border-left-color: #81d4fa;
+      background-color: #123344;
     }
-    /* Experience */
-    .experience-list {
-      list-style: none;
-      padding-left: 0;
+    .popup.edenmine {
+      border-left-color: #a5d6a7;
+      background-color: #234523;
     }
-    .experience-list li {
-      background: #121212;
-      margin-bottom: 1rem;
-      padding: 1rem 1.5rem;
-      border-radius: 6px;
-      box-shadow: 0 2px 8px rgba(79,195,247,0.25);
-      transition: background 0.3s ease, color 0.3s ease;
+    .popup.evercraft {
+      border-left-color: #81d4fa;
+      background-color: #123344;
+    }
+    .popup.coralmc {
+      border-left-color: #81d4fa;
+      background-color: #123344;
+    }
+    .popup.auramc {
+      border-left-color: #ce93d8;
+      background-color: #3e2c4d;
+    }
+
+    /* Cambia colore link hover nel popup */
+    .popup a {
       color: #ddd;
+      text-decoration: underline;
     }
-    .experience-list li:hover {
-      background: #1b1b1b;
-    }
-
-    .role {
-      font-weight: 700;
-      font-size: 1.1rem;
-    }
-    /* Colori specifici per le parti dei server */
-    .icenetwork .part1 { color: #81d4fa; } /* Ice azzurro chiaro */
-    .icenetwork .part2 { color: #ffffff; } /* Network bianco */
-
-    .atlasmc .part1 { color: #81d4fa; } /* Atlas azzurro chiaro */
-    .atlasmc .part2 { color: #ffffff; } /* MC bianco */
-
-    .edenmine .part1 { color: #a5d6a7; } /* Edenmine verde chiaro */
-    .edenmine .part2 { color: #ffffff; } /* Network bianco */
-
-    .evercraft .part1 { color: #81d4fa; } /* Ever azzurro chiaro */
-    .evercraft .part2 { color: #ffffff; } /* Craft bianco */
-
-    .coralmc .part1 { color: #81d4fa; } /* Coral azzurro chiaro */
-    .coralmc .part2 { color: #ffffff; } /* MC bianco */
-
-    .auramc .part1 { color: #ce93d8; } /* Aura viola chiaro */
-    .auramc .part2 { color: #ffffff; } /* MC bianco */
-
-    .duration {
-      font-style: italic;
-      color: #aaa;
-      margin-left: 0.3rem;
-    }
-
-    /* Skills */
-    .skills-list {
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      padding-left: 0;
-    }
-    .skills-list li {
-      background: #1b1b1b;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      box-shadow: 0 2px 8px rgba(79,195,247,0.5);
-      font-weight: 600;
-      color: #e0e0e0;
-      cursor: pointer;
-      user-select: none;
-      transition: background 0.3s ease;
-    }
-    .skills-list li:hover {
-      background: #4fc3f7;
-      color: #121212;
-    }
-    .skills-list li.active {
-      background: #4fc3f7;
-      color: #121212;
-      box-shadow: 0 0 10px 3px #4fc3f7;
-    }
-
-    /* Evidenziazioni server */
-    .experience-list li.active.auramc {
-      background-color: #6a4a8b; /* viola chiaro */
-      color: #eee;
-      box-shadow: 0 0 12px 3px #ce93d8;
-    }
-    .experience-list li.active.edenmine {
-      background-color: #7cbf82; /* verde chiaro */
+    .popup a:hover {
       color: #fff;
-      box-shadow: 0 0 12px 3px #a5d6a7;
-    }
-    .experience-list li.active.icenetwork,
-    .experience-list li.active.atlasmc,
-    .experience-list li.active.coralmc,
-    .experience-list li.active.evercraft {
-      background-color: #4fc3f7; /* azzurro chiaro */
-      color: #000;
-      box-shadow: 0 0 12px 3px #81d4fa;
     }
 
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      background: #121212;
-      color: #777;
-      font-size: 0.9rem;
-      margin-top: 3rem;
-    }
-    /* Responsive */
-    @media(max-width: 600px) {
-      nav ul {
-        gap: 1rem;
-      }
-      main {
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
-      }
-    }
   </style>
 </head>
 <body>
@@ -225,42 +135,47 @@
 
   <section id="experience">
     <h2>Staff Experience</h2>
-    <ul class="experience-list">
-      <li class="icenetwork">
-        <span class="role"><span class="part1">Ice</span><span class="part2">Network</span></span>
-        – Helper Supporter → Moderator
-        <span class="duration">(~3.5 months)</span>
-      </li>
-      <li class="atlasmc">
-        <span class="role"><span class="part1">Atlas</span><span class="part2">MC</span></span>
-        – Senior Helper & Logs Verified
-        <span class="duration">(~3 months)</span>
-      </li>
-      <li class="edenmine">
-        <span class="role"><span class="part1">Edenmine</span> <span class="part2">Network</span></span>
-        – Trial Logs Verified
-        <span class="duration">(~20 days)</span>
-      </li>
-      <li class="evercraft">
-        <span class="role"><span class="part1">Ever</span><span class="part2">Craft</span></span>
-        – Helper → Global Helper
-      </li>
-      <li class="coralmc">
-        <span class="role"><span class="part1">Coral</span><span class="part2">MC</span></span>
-        – Helper → Mod → Mod+ & Logs Verified
-        <span class="duration">(~8 months)</span>
-      </li>
-      <li class="auramc">
-        <span class="role"><span class="part1">Aura</span><span class="part2">MC</span></span>
-        – Multiple Roles: Mod, Game Mode Manager, SrMod Media Manager
-        <span class="duration">(~4–5 months)</span>
-      </li>
-    </ul>
+    <div class="experience-container">
+      <ul class="experience-list">
+        <li class="icenetwork" data-server="icenetwork">
+          <span class="role"><span class="part1">Ice</span><span class="part2">Network</span></span> – Helper Supporter → Moderator
+          <span class="duration">(~3.5 months)</span>
+        </li>
+        <li class="atlasmc" data-server="atlasmc">
+          <span class="role"><span class="part1">Atlas</span><span class="part2">MC</span></span> – Senior Helper & Logs Verified
+          <span class="duration">(~3 months)</span>
+        </li>
+        <li class="edenmine" data-server="edenmine">
+          <span class="role"><span class="part1">Edenmine</span> <span class="part2">Network</span></span> – Trial Logs Verified
+          <span class="duration">(~20 days)</span>
+        </li>
+        <li class="evercraft" data-server="evercraft">
+          <span class="role"><span class="part1">Ever</span><span class="part2">Craft</span></span> – Helper → Global Helper
+        </li>
+        <li class="coralmc" data-server="coralmc">
+          <span class="role"><span class="part1">Coral</span><span class="part2">MC</span></span> – Helper → Mod → Mod+ & Logs Verified
+          <span class="duration">(~8 months)</span>
+        </li>
+        <li class="auramc" data-server="auramc">
+          <span class="role"><span class="part1">Aura</span><span class="part2">MC</span></span> – Multiple Roles: Mod, Game Mode Manager, SrMod Media Manager
+          <span class="duration">(~4–5 months)</span>
+        </li>
+      </ul>
+
+      <!-- Popup dettagli esperienza -->
+      <div class="popup" id="experience-popup" aria-hidden="true">
+        <div class="popup-header">
+          <h3 id="popup-title">Title</h3>
+          <div class="popup-close" role="button" aria-label="Close popup" tabindex="0">&times;</div>
+        </div>
+        <div id="popup-content">Content</div>
+      </div>
+    </div>
   </section>
 
   <section id="about">
     <h2>About Me</h2>
-    <p>Experienced Minecraft staff member progressing from basic moderator to senior and manager roles in various Italian networks.</p>
+    <p>Experienced Minecraft staff member progressing from basic moderator to senior and manager roles in various Italian networks..</p>
   </section>
 </main>
 
@@ -269,32 +184,71 @@
 </footer>
 
 <script>
-  // Evidenzia server in base alla skill cliccata
-  const skillItems = document.querySelectorAll('.skills-list li');
-  const experienceItems = document.querySelectorAll('.experience-list li');
+  // Variabili popup
+  const popup = document.getElementById('experience-popup');
+  const popupTitle = document.getElementById('popup-title');
+  const popupContent = document.getElementById('popup-content');
+  const popupClose = document.querySelector('.popup-close');
 
-  skillItems.forEach(skill => {
-    skill.addEventListener('click', () => {
-      // Rimuovi evidenze precedenti
-      skillItems.forEach(s => s.classList.remove('active'));
-      experienceItems.forEach(e => e.classList.remove('active'));
+  // Testi dettagliati per ogni server (versione sintetica e positiva)
+  const details = {
+    icenetwork: `Roles: Helper Supporter, Moderator (about 3.5 months). I had a great time working with staff and players on this server.`,
+    atlasmc: `Roles: Senior Helper and Logs Verified (about 3 months). This was my first serious server and I grew a lot in staffing skills.`,
+    edenmine: `Role: Trial Logs Verified (about 20 days). I wanted to gain international experience and grow beyond Italian servers.`,
+    evercraft: `Roles: Helper and Global Helper. I learned a lot and enjoyed the experience within this boxpvp and partner network.`,
+    coralmc: `Roles: Helper, Mod, Mod+ and Logs Verified (about 8 months). I worked closely with a friendly and supportive staff.`,
+    auramc: `Roles: Mod, Game Mode Manager, SrMod Media Manager (about 4-5 months). I held multiple roles and gained experience managing media and staff across different game modes within AuraMC and related smaller servers.`
+  };
 
-      // Attiva il skill cliccato
-      skill.classList.add('active');
+  // Funzione per aprire popup
+  function openPopup(server) {
+    popup.className = 'popup active ' + server;
+    popupTitle.textContent = server.charAt(0).toUpperCase() + server.slice(1) + " Details";
+    popupContent.textContent = details[server] || "No details available.";
+    popup.setAttribute('aria-hidden', 'false');
 
-      // Prendi i server associati (spazi separati)
-      const servers = skill.dataset.servers.split(' ');
+    // Cambia colore testo voce esperienza cliccata
+    document.querySelectorAll('.experience-list li').forEach(li => {
+      if (li.dataset.server === server) {
+        li.classList.add('active-server');
+      } else {
+        li.classList.remove('active-server');
+      }
+    });
+  }
 
-      // Evidenzia i server giusti
-      experienceItems.forEach(item => {
-        servers.forEach(serverClass => {
-          if(item.classList.contains(serverClass)) {
-            item.classList.add('active');
-          }
-        });
-      });
+  // Funzione per chiudere popup
+  function closePopup() {
+    popup.classList.remove('active', 'icenetwork', 'atlasmc', 'edenmine', 'evercraft', 'coralmc', 'auramc');
+    popup.setAttribute('aria-hidden', 'true');
+
+    // Ripristina colore testo esperienza
+    document.querySelectorAll('.experience-list li').forEach(li => {
+      li.classList.remove('active-server');
+    });
+  }
+
+  // Event listeners sulle voci esperienza
+  document.querySelectorAll('.experience-list li').forEach(li => {
+    li.addEventListener('click', () => {
+      const server = li.dataset.server;
+      if (popup.classList.contains('active') && popup.classList.contains(server)) {
+        closePopup();
+      } else {
+        openPopup(server);
+      }
     });
   });
+
+  // Event listener chiusura popup
+  popupClose.addEventListener('click', closePopup);
+  popupClose.addEventListener('keydown', e => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      closePopup();
+    }
+  });
+
 </script>
 
 </body>
