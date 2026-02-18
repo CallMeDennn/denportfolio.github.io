@@ -24,9 +24,11 @@
     a:hover {
       text-decoration: underline;
     }
-    /* Navbar */
+    /* Navbar fissa */
     nav {
       position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
       background: #121212;
       padding: 1rem 2rem;
@@ -34,7 +36,7 @@
       justify-content: space-between;
       align-items: center;
       box-shadow: 0 2px 8px rgba(0,0,0,0.8);
-      z-index: 100;
+      z-index: 1000;
     }
     nav .logo {
       font-weight: 700;
@@ -62,11 +64,17 @@
       text-decoration: none;
     }
 
-    /* Sections */
-    section {
+    /* Padding per contenuto sotto navbar */
+    main {
+      padding-top: 80px; /* spazio per navbar */
       max-width: 900px;
-      margin: 6rem auto 4rem;
-      padding: 0 1rem;
+      margin: 0 auto 4rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    /* Sezioni */
+    section {
+      margin-bottom: 4rem;
     }
     section h2 {
       font-size: 2rem;
@@ -86,7 +94,7 @@
       padding: 1rem 1.5rem;
       border-radius: 6px;
       box-shadow: 0 2px 8px rgba(79,195,247,0.25);
-      transition: background 0.3s ease;
+      transition: background 0.3s ease, color 0.3s ease;
       color: #ddd;
     }
     .experience-list li:hover {
@@ -107,8 +115,6 @@
     .edenmine .part1 { color: #a5d6a7; } /* Edenmine verde chiaro */
     .edenmine .part2 { color: #ffffff; } /* Network bianco */
 
-    .nevercraft .part1 { color: #ef9a9a; } /* Never rosso chiaro */
-    .nevercraft .part2 { color: #ffffff; } /* Craft bianco */
     .evercraft .part1 { color: #81d4fa; } /* Ever azzurro chiaro */
     .evercraft .part2 { color: #ffffff; } /* Craft bianco */
 
@@ -123,6 +129,7 @@
       color: #aaa;
       margin-left: 0.3rem;
     }
+
     /* Skills */
     .skills-list {
       list-style: none;
@@ -138,13 +145,40 @@
       box-shadow: 0 2px 8px rgba(79,195,247,0.5);
       font-weight: 600;
       color: #e0e0e0;
+      cursor: pointer;
+      user-select: none;
       transition: background 0.3s ease;
     }
     .skills-list li:hover {
       background: #4fc3f7;
       color: #121212;
-      cursor: default;
     }
+    .skills-list li.active {
+      background: #4fc3f7;
+      color: #121212;
+      box-shadow: 0 0 10px 3px #4fc3f7;
+    }
+
+    /* Evidenziazioni server */
+    .experience-list li.active.auramc {
+      background-color: #6a4a8b; /* viola chiaro */
+      color: #eee;
+      box-shadow: 0 0 12px 3px #ce93d8;
+    }
+    .experience-list li.active.edenmine {
+      background-color: #7cbf82; /* verde chiaro */
+      color: #fff;
+      box-shadow: 0 0 12px 3px #a5d6a7;
+    }
+    .experience-list li.active.icenetwork,
+    .experience-list li.active.atlasmc,
+    .experience-list li.active.coralmc,
+    .experience-list li.active.evercraft {
+      background-color: #4fc3f7; /* azzurro chiaro */
+      color: #000;
+      box-shadow: 0 0 12px 3px #81d4fa;
+    }
+
     /* Footer */
     footer {
       text-align: center;
@@ -159,8 +193,9 @@
       nav ul {
         gap: 1rem;
       }
-      section {
-        margin: 5rem 1rem 3rem;
+      main {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
       }
     }
   </style>
@@ -170,69 +205,97 @@
 <nav>
   <div class="logo">CallMeDen_</div>
   <ul>
-    <li><a href="#about">About</a></li>
+    <li><a href="#core-skills">Core Skills</a></li>
     <li><a href="#experience">Experience</a></li>
-    <li><a href="#skills">Skills</a></li>
+    <li><a href="#about">About</a></li>
   </ul>
 </nav>
 
-<section id="about">
-  <h2>About Me</h2>
-  <p>Experienced Minecraft staff member progressing from basic moderator to senior and manager roles in various Italian networks..</p>
-</section>
+<main>
+  <section id="core-skills">
+    <h2>Core Skills</h2>
+    <ul class="skills-list">
+      <li data-servers="auramc">Game Mode Manager</li>
+      <li data-servers="icenetwork atlasmc coralmc evercraft auramc edenmine">Moderation</li>
+      <li data-servers="atlasmc edenmine coralmc">Logs Verification</li>
+      <li data-servers="auramc">Pluginner</li>
+      <li data-servers="auramc">Media Team Management</li>
+    </ul>
+  </section>
 
-<section id="experience">
-  <h2>Staff Experience</h2>
-  <ul class="experience-list">
-    <li class="icenetwork">
-      <span class="role"><span class="part1">Ice</span><span class="part2">Network</span></span>
-      – Helper Supporter → Moderator
-      <span class="duration">(~3.5 months)</span>
-    </li>
-    <li class="atlasmc">
-      <span class="role"><span class="part1">Atlas</span><span class="part2">MC</span></span>
-      – Senior Helper & Logs Verified
-      <span class="duration">(~3 months)</span>
-    </li>
-    <li class="edenmine">
-      <span class="role"><span class="part1">Edenmine</span> <span class="part2">Network</span></span>
-      – Trial Logs Verified
-      <span class="duration">(~20 days)</span>
-    </li>
-    <li>
-      <span class="role"><span class="nevercraft part1">Never</span><span class="nevercraft part2">Craft</span> / <span class="evercraft part1">Ever</span><span class="evercraft part2">Craft</span> Network</span>
-      – Helper → Global Helper
-    </li>
-    <li class="coralmc">
-      <span class="role"><span class="part1">Coral</span><span class="part2">MC</span></span>
-      – Helper → Mod → Mod+ & Logs Verified
-      <span class="duration">(~8 months)</span>
-    </li>
-    <li class="auramc">
-      <span class="role"><span class="part1">Aura</span><span class="part2">MC</span></span>
-      – Multiple Roles: Mod, Game Mode Manager, SrMod Media Manager
-      <span class="duration">(~4–5 months)</span>
-    </li>
-  </ul>
-</section>
+  <section id="experience">
+    <h2>Staff Experience</h2>
+    <ul class="experience-list">
+      <li class="icenetwork">
+        <span class="role"><span class="part1">Ice</span><span class="part2">Network</span></span>
+        – Helper Supporter → Moderator
+        <span class="duration">(~3.5 months)</span>
+      </li>
+      <li class="atlasmc">
+        <span class="role"><span class="part1">Atlas</span><span class="part2">MC</span></span>
+        – Senior Helper & Logs Verified
+        <span class="duration">(~3 months)</span>
+      </li>
+      <li class="edenmine">
+        <span class="role"><span class="part1">Edenmine</span> <span class="part2">Network</span></span>
+        – Trial Logs Verified
+        <span class="duration">(~20 days)</span>
+      </li>
+      <li class="evercraft">
+        <span class="role"><span class="part1">Ever</span><span class="part2">Craft</span></span>
+        – Helper → Global Helper
+      </li>
+      <li class="coralmc">
+        <span class="role"><span class="part1">Coral</span><span class="part2">MC</span></span>
+        – Helper → Mod → Mod+ & Logs Verified
+        <span class="duration">(~8 months)</span>
+      </li>
+      <li class="auramc">
+        <span class="role"><span class="part1">Aura</span><span class="part2">MC</span></span>
+        – Multiple Roles: Mod, Game Mode Manager, SrMod Media Manager
+        <span class="duration">(~4–5 months)</span>
+      </li>
+    </ul>
+  </section>
 
-<section id="skills">
-  <h2>Core Skills</h2>
-  <ul class="skills-list">
-    <li>Game Mode Manager</li>
-    <li>Moderation</li>
-    <li>Logs Verification</li>
-    <li>Pluginner</li>
-    <li>Media Team Management</li>
-  </ul>
-</section>
+  <section id="about">
+    <h2>About Me</h2>
+    <p>Experienced Minecraft staff member progressing from basic moderator to senior and manager roles in various Italian networks.</p>
+  </section>
+</main>
 
 <footer>
   <p>GitHub: <a href="https://github.com/CallMeDennn" target="_blank">https://github.com/CallMeDennn</a></p>
 </footer>
 
-</body>
-</html>
+<script>
+  // Evidenzia server in base alla skill cliccata
+  const skillItems = document.querySelectorAll('.skills-list li');
+  const experienceItems = document.querySelectorAll('.experience-list li');
+
+  skillItems.forEach(skill => {
+    skill.addEventListener('click', () => {
+      // Rimuovi evidenze precedenti
+      skillItems.forEach(s => s.classList.remove('active'));
+      experienceItems.forEach(e => e.classList.remove('active'));
+
+      // Attiva il skill cliccato
+      skill.classList.add('active');
+
+      // Prendi i server associati (spazi separati)
+      const servers = skill.dataset.servers.split(' ');
+
+      // Evidenzia i server giusti
+      experienceItems.forEach(item => {
+        servers.forEach(serverClass => {
+          if(item.classList.contains(serverClass)) {
+            item.classList.add('active');
+          }
+        });
+      });
+    });
+  });
+</script>
 
 </body>
 </html>
