@@ -12,13 +12,13 @@
     }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #121212;
+      background-color: #0a0a0a; /* sfondo molto scuro */
       color: #e0e0e0;
       line-height: 1.6;
       scroll-behavior: smooth;
     }
     a {
-      color: #ff9800;
+      color: #4fc3f7; /* azzurro chiaro */
       text-decoration: none;
     }
     a:hover {
@@ -28,19 +28,20 @@
     nav {
       position: fixed;
       width: 100%;
-      background: #1f1f1f;
+      background: #121212;
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.7);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.8);
       z-index: 100;
     }
     nav .logo {
       font-weight: 700;
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       letter-spacing: 2px;
-      color: #ff9800;
+      color: #4fc3f7;
+      user-select: none;
     }
     nav ul {
       list-style: none;
@@ -50,10 +51,17 @@
     nav ul li {
       font-weight: 600;
       cursor: pointer;
+      color: #4fc3f7;
+      transition: color 0.3s ease;
     }
     nav ul li:hover {
-      color: #ffb74d;
+      color: #81d4fa; /* azzurro più chiaro al passaggio */
     }
+    nav ul li a {
+      color: inherit;
+      text-decoration: none;
+    }
+
     /* Sections */
     section {
       max-width: 900px;
@@ -62,17 +70,10 @@
     }
     section h2 {
       font-size: 2rem;
-      border-bottom: 3px solid #ff9800;
+      border-bottom: 3px solid #4fc3f7;
       padding-bottom: 0.3rem;
       margin-bottom: 1.5rem;
       font-weight: 700;
-    }
-    /* About */
-    #about p {
-      font-size: 1.1rem;
-      max-width: 700px;
-      margin-bottom: 2rem;
-      color: #bbb;
     }
     /* Experience */
     .experience-list {
@@ -80,24 +81,47 @@
       padding-left: 0;
     }
     .experience-list li {
-      background: #1e1e1e;
+      background: #121212;
       margin-bottom: 1rem;
       padding: 1rem 1.5rem;
       border-radius: 6px;
-      box-shadow: 0 2px 6px rgba(255, 152, 0, 0.2);
+      box-shadow: 0 2px 8px rgba(79,195,247,0.25);
       transition: background 0.3s ease;
+      color: #ddd;
     }
     .experience-list li:hover {
-      background: #292929;
+      background: #1b1b1b;
     }
+
     .role {
       font-weight: 700;
       font-size: 1.1rem;
-      color: #ff9800;
     }
+    /* Colori specifici per le parti dei server */
+    .icenetwork .part1 { color: #81d4fa; } /* Ice azzurro chiaro */
+    .icenetwork .part2 { color: #ffffff; } /* Network bianco */
+
+    .atlasmc .part1 { color: #81d4fa; } /* Atlas azzurro chiaro */
+    .atlasmc .part2 { color: #ffffff; } /* MC bianco */
+
+    .edenmine .part1 { color: #a5d6a7; } /* Edenmine verde chiaro */
+    .edenmine .part2 { color: #ffffff; } /* Network bianco */
+
+    .nevercraft .part1 { color: #ef9a9a; } /* Never rosso chiaro */
+    .nevercraft .part2 { color: #ffffff; } /* Craft bianco */
+    .evercraft .part1 { color: #81d4fa; } /* Ever azzurro chiaro */
+    .evercraft .part2 { color: #ffffff; } /* Craft bianco */
+
+    .coralmc .part1 { color: #81d4fa; } /* Coral azzurro chiaro */
+    .coralmc .part2 { color: #ffffff; } /* MC bianco */
+
+    .auramc .part1 { color: #ce93d8; } /* Aura viola chiaro */
+    .auramc .part2 { color: #ffffff; } /* MC bianco */
+
     .duration {
       font-style: italic;
-      color: #ccc;
+      color: #aaa;
+      margin-left: 0.3rem;
     }
     /* Skills */
     .skills-list {
@@ -108,16 +132,16 @@
       padding-left: 0;
     }
     .skills-list li {
-      background: #292929;
+      background: #1b1b1b;
       padding: 0.5rem 1rem;
       border-radius: 20px;
-      box-shadow: 0 2px 6px rgba(255, 152, 0, 0.4);
+      box-shadow: 0 2px 8px rgba(79,195,247,0.5);
       font-weight: 600;
-      color: #fff;
+      color: #e0e0e0;
       transition: background 0.3s ease;
     }
     .skills-list li:hover {
-      background: #ff9800;
+      background: #4fc3f7;
       color: #121212;
       cursor: default;
     }
@@ -125,7 +149,7 @@
     footer {
       text-align: center;
       padding: 2rem 1rem;
-      background: #1f1f1f;
+      background: #121212;
       color: #777;
       font-size: 0.9rem;
       margin-top: 3rem;
@@ -144,7 +168,7 @@
 <body>
 
 <nav>
-  <div class="logo">CallMeDennn</div>
+  <div class="logo">CallMeDen_</div>
   <ul>
     <li><a href="#about">About</a></li>
     <li><a href="#experience">Experience</a></li>
@@ -154,18 +178,41 @@
 
 <section id="about">
   <h2>About Me</h2>
-  <p>I am a 17-year-old boy, a member of various Minecraft Server staff teams, who has held roles from basic moderator to senior and manager in various Italian networks..</p>
+  <p>Experienced Minecraft staff member progressing from basic moderator to senior and manager roles in various Italian networks..</p>
 </section>
 
 <section id="experience">
   <h2>Staff Experience</h2>
   <ul class="experience-list">
-    <li><span class="role">IceNetwork</span> – Helper Supporter → Moderator <span class="duration">(~3.5 months)</span></li>
-    <li><span class="role">AtlasMC</span> – Senior Helper & Logs Verified <span class="duration">(~3 months)</span></li>
-    <li><span class="role">Edenmine Network</span> – Trial Logs Verified<span class="duration">(~20 days)</span></li>
-    <li><span class="role">NeverCraft Network / EverCraft Network</span> – Helper → Global Helper</li>
-    <li><span class="role">CoralMC</span> – Helper → Mod → Mod+ & Logs Verified <span class="duration">(~8 months)</span></li>
-    <li><span class="role">AuraMC</span> – Multiple Roles: Mod, Game Mode Manager, SrMod Media Manager <span class="duration">(~4–5 months)</span></li>
+    <li class="icenetwork">
+      <span class="role"><span class="part1">Ice</span><span class="part2">Network</span></span>
+      – Helper Supporter → Moderator
+      <span class="duration">(~3.5 months)</span>
+    </li>
+    <li class="atlasmc">
+      <span class="role"><span class="part1">Atlas</span><span class="part2">MC</span></span>
+      – Senior Helper & Logs Verified
+      <span class="duration">(~3 months)</span>
+    </li>
+    <li class="edenmine">
+      <span class="role"><span class="part1">Edenmine</span> <span class="part2">Network</span></span>
+      – Trial Logs Verified
+      <span class="duration">(~20 days)</span>
+    </li>
+    <li>
+      <span class="role"><span class="nevercraft part1">Never</span><span class="nevercraft part2">Craft</span> / <span class="evercraft part1">Ever</span><span class="evercraft part2">Craft</span> Network</span>
+      – Helper → Global Helper
+    </li>
+    <li class="coralmc">
+      <span class="role"><span class="part1">Coral</span><span class="part2">MC</span></span>
+      – Helper → Mod → Mod+ & Logs Verified
+      <span class="duration">(~8 months)</span>
+    </li>
+    <li class="auramc">
+      <span class="role"><span class="part1">Aura</span><span class="part2">MC</span></span>
+      – Multiple Roles: Mod, Game Mode Manager, SrMod Media Manager
+      <span class="duration">(~4–5 months)</span>
+    </li>
   </ul>
 </section>
 
@@ -183,6 +230,9 @@
 <footer>
   <p>GitHub: <a href="https://github.com/CallMeDennn" target="_blank">https://github.com/CallMeDennn</a></p>
 </footer>
+
+</body>
+</html>
 
 </body>
 </html>
