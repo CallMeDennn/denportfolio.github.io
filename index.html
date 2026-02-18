@@ -179,24 +179,25 @@
       box-shadow: 0 0 12px 3px #81d4fa;
     }
 
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      background: #121212;
-      color: #777;
-      font-size: 0.9rem;
-      margin-top: 3rem;
+    /* Projects and Future Projects lists */
+    .projects-list, .future-projects-list {
+      list-style: none;
+      padding-left: 0;
     }
-    /* Responsive */
-    @media(max-width: 600px) {
-      nav ul {
-        gap: 1rem;
-      }
-      main {
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
-      }
+    .projects-list li, .future-projects-list li {
+      background: #121212;
+      margin-bottom: 1rem;
+      padding: 1rem 1.5rem;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(79,195,247,0.25);
+      color: #ddd;
+      font-weight: 600;
+      line-height: 1.4;
+      transition: background 0.3s ease;
+    }
+    .projects-list li:hover, .future-projects-list li:hover {
+      background: #1b1b1b;
+      cursor: default;
     }
   </style>
 </head>
@@ -207,6 +208,8 @@
   <ul>
     <li><a href="#core-skills">Core Skills</a></li>
     <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#future-projects">Future Projects</a></li>
     <li><a href="#about">About</a></li>
   </ul>
 </nav>
@@ -254,6 +257,24 @@
         <span class="role"><span class="part1">Aura</span><span class="part2">MC</span></span>
         – Multiple Roles: Mod, Game Mode Manager, SrMod Media Manager
         <span class="duration">(~4–5 months)</span>
+      </li>
+    </ul>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <ul class="projects-list">
+      <li>
+        <strong>VanillaMC</strong> – I worked mainly for this server as a Manager, overseeing the staff team and helping to coordinate game modes and events. It was a valuable experience growing leadership and management skills.
+      </li>
+    </ul>
+  </section>
+
+  <section id="future-projects">
+    <h2>Future Projects</h2>
+    <ul class="future-projects-list">
+      <li>
+        I aim to collaborate with major Minecraft servers, especially focusing on plugin development (Pluginner role), to contribute custom features and enhance gameplay experiences.
       </li>
     </ul>
   </section>
