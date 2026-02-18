@@ -5,7 +5,6 @@
   <title>Minecraft Staff Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    /* Reset & base */
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -17,7 +16,6 @@
     a { color: #4fc3f7; text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    /* Navbar fissa */
     nav {
       position: fixed;
       top: 0;
@@ -69,7 +67,6 @@
       font-weight: 700;
     }
 
-    /* Experience */
     .experience-list { list-style: none; padding-left: 0; }
     .experience-list li {
       background: #121212;
@@ -83,7 +80,6 @@
     .experience-list li:hover { background: #1b1b1b; }
     .role { font-weight: 700; font-size: 1.1rem; }
 
-    /* Colori server */
     .icenetwork .part1 { color: #81d4fa; } .icenetwork .part2 { color: #ffffff; }
     .atlasmc .part1 { color: #81d4fa; } .atlasmc .part2 { color: #ffffff; }
     .edenmine .part1 { color: #a5d6a7; } .edenmine .part2 { color: #ffffff; }
@@ -93,7 +89,6 @@
 
     .duration { font-style: italic; color: #aaa; margin-left: 0.3rem; }
 
-    /* Skills */
     .skills-list {
       list-style: none;
       display: flex;
@@ -115,7 +110,6 @@
     .skills-list li:hover { background: #4fc3f7; color: #121212; }
     .skills-list li.active { background: #4fc3f7; color: #121212; box-shadow: 0 0 10px 3px #4fc3f7; }
 
-    /* Evidenziazioni server */
     .experience-list li.active.auramc { background-color: #6a4a8b; color: #eee; box-shadow: 0 0 12px 3px #ce93d8; }
     .experience-list li.active.edenmine { background-color: #7cbf82; color: #fff; box-shadow: 0 0 12px 3px #a5d6a7; }
     .experience-list li.active.icenetwork,
@@ -123,26 +117,26 @@
     .experience-list li.active.coralmc,
     .experience-list li.active.evercraft { background-color: #4fc3f7; color: #000; box-shadow: 0 0 12px 3px #81d4fa; }
 
-    /* Projects */
-    .projects-list { list-style: none; padding-left: 0; }
-    .projects-list li { 
-      background: #121212; margin-bottom: 1rem; padding: 1rem 1.5rem; border-radius: 6px; 
-      box-shadow: 0 2px 8px rgba(79,195,247,0.25); 
-    }
-    .projects-list li a { font-weight: 700; }
-
-    /* Future Projects */
-    .future-projects-list {
-      list-style: none; /* Rimuove il puntino */
+    .projects-list, .future-projects-list {
+      list-style: none;
       padding-left: 0;
     }
-    .future-projects-list li { 
-      background: #121212; margin-bottom: 1rem; padding: 1rem 1.5rem; border-radius: 6px; 
-      box-shadow: 0 2px 8px rgba(79,195,247,0.25); 
+    .projects-list li, .future-projects-list li {
+      background: #121212;
+      margin-bottom: 1rem;
+      padding: 1rem 1.5rem;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(79,195,247,0.25);
     }
 
-    /* Footer */
-    footer { text-align: center; padding: 2rem 1rem; background: #121212; color: #777; font-size: 0.9rem; margin-top: 3rem; }
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: #121212;
+      color: #777;
+      font-size: 0.9rem;
+      margin-top: 3rem;
+    }
 
     @media(max-width: 600px) {
       nav ul { gap: 1rem; }
@@ -164,77 +158,77 @@
 </nav>
 
 <main>
-  <section id="about">
-    <h2>About Me</h2>
-    <p>Experienced Minecraft staff member progressing from basic moderator to senior and manager roles in various Italian networks. Skilled in moderation, game mode management, plugin translation, and media team coordination.</p>
-  </section>
 
-  <section id="core-skills">
-    <h2>Core Skills</h2>
-    <ul class="skills-list">
-      <li data-servers="auramc">Game Mode Manager</li>
-      <li data-servers="icenetwork atlasmc coralmc evercraft auramc edenmine">Moderation</li>
-      <li data-servers="atlasmc edenmine coralmc">Logs Verification</li>
-      <li data-servers="auramc">Pluginner</li>
-      <li data-servers="auramc">Media Team Management</li>
-    </ul>
-  </section>
+<section id="about">
+  <h2>About Me</h2>
+  <p>Experienced Minecraft staff member progressing from basic moderator to senior and manager roles in various Italian networks. Skilled in moderation, game mode management, plugin translation, and media team coordination.</p>
+</section>
 
-  <section id="experience">
-    <h2>Staff Experience</h2>
-    <ul class="experience-list">
-      <li class="icenetwork">
-        <span class="role"><span class="part1">Ice</span><span class="part2">Network</span></span> – Helper Supporter → Moderator
-        <span class="duration">(~3.5 months)</span>
-      </li>
-      <li class="atlasmc">
-        <span class="role"><span class="part1">Atlas</span><span class="part2">MC</span></span> – Senior Helper & Logs Verified
-        <span class="duration">(~3 months)</span>
-      </li>
-      <li class="edenmine">
-        <span class="role"><span class="part1">Edenmine</span> <span class="part2">Network</span></span> – Trial Logs Verified
-        <span class="duration">(~20 days)</span>
-      </li>
-      <li class="evercraft">
-        <span class="role"><span class="part1">Ever</span><span class="part2">Craft</span></span> – Helper → Global Helper
-      </li>
-      <li class="coralmc">
-        <span class="role"><span class="part1">Coral</span><span class="part2">MC</span></span> – Helper → Mod → Mod+ & Logs Verified
-        <span class="duration">(~8 months)</span>
-      </li>
-      <li class="auramc">
-        <span class="role"><span class="part1">Aura</span><span class="part2">MC</span></span> – Multiple Roles: Mod, Game Mode Manager, SrMod Media Manager
-        <span class="duration">(~4–5 months)</span>
-      </li>
-    </ul>
-  </section>
+<section id="core-skills">
+  <h2>Core Skills</h2>
+  <ul class="skills-list">
+    <li data-servers="auramc">Game Mode Manager</li>
+    <li data-servers="icenetwork atlasmc coralmc evercraft auramc edenmine">Moderation</li>
+    <li data-servers="atlasmc edenmine coralmc">Logs Verification</li>
+    <li data-servers="auramc">Pluginner</li>
+    <li data-servers="auramc">Media Team Management</li>
+  </ul>
+</section>
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <ul class="projects-list">
-      <li>
-        <strong><a href="files/luckperms-it.yml" download>LuckPerms in Italian</a></strong> – Translated the popular LuckPerms plugin into Italian. Players can download the full configuration and messages file to use directly on their servers.
-      </li>
-    </ul>
-  </section>
+<section id="experience">
+  <h2>Staff Experience</h2>
+  <ul class="experience-list">
+    <li class="icenetwork">
+      <span class="role"><span class="part1">Ice</span><span class="part2">Network</span></span> – Helper Supporter → Moderator
+      <span class="duration">(~3.5 months)</span>
+    </li>
+    <li class="atlasmc">
+      <span class="role"><span class="part1">Atlas</span><span class="part2">MC</span></span> – Senior Helper & Logs Verified
+      <span class="duration">(~3 months)</span>
+    </li>
+    <li class="edenmine">
+      <span class="role"><span class="part1">Edenmine</span> <span class="part2">Network</span></span> – Trial Logs Verified
+      <span class="duration">(~20 days)</span>
+    </li>
+    <li class="evercraft">
+      <span class="role"><span class="part1">Ever</span><span class="part2">Craft</span></span> – Helper → Global Helper
+    </li>
+    <li class="coralmc">
+      <span class="role"><span class="part1">Coral</span><span class="part2">MC</span></span> – Helper → Mod → Mod+ & Logs Verified
+      <span class="duration">(~8 months)</span>
+    </li>
+    <li class="auramc">
+      <span class="role"><span class="part1">Aura</span><span class="part2">MC</span></span> – Multiple Roles: Mod, Game Mode Manager, SrMod Media Manager
+      <span class="duration">(~4–5 months)</span>
+    </li>
+  </ul>
+</section>
 
-  <section id="future-projects">
-    <h2>Future Projects</h2>
-    <ul class="future-projects-list">
-      <li>
-        <strong>Plugin Development for Major Servers</strong> – Plan to work as a Pluginner on large Minecraft servers, creating custom plugins and improving existing systems to enhance gameplay and server functionality.
-      </li>
-    </ul>
-  </section>
+<section id="projects">
+  <h2>Projects</h2>
+  <ul class="projects-list">
+    <li>
+      <strong>Coming Soon</strong> – Projects will be added here soon.
+    </li>
+  </ul>
+</section>
+
+<section id="future-projects">
+  <h2>Future Projects</h2>
+  <ul class="future-projects-list">
+    <li>
+      <strong>Plugin Development for Major Servers (Coming Soon)</strong> – Plan to work as a Pluginner on large Minecraft servers, creating custom plugins and improving existing systems to enhance gameplay and server functionality.
+    </li>
+  </ul>
+</section>
+
 </main>
 
 <footer>
   <p>GitHub: <a href="https://github.com/CallMeDennn" target="_blank">https://github.com/CallMeDennn</a></p>
-  <p>Telegram: <a href="https://t.me/ipreportss" target="_blank">https://t.me/ipreportss</a></p>
 </footer>
 
 <script>
-  // Evidenzia server in base alla skill cliccata
   const skillItems = document.querySelectorAll('.skills-list li');
   const experienceItems = document.querySelectorAll('.experience-list li');
 
