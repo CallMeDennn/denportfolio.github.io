@@ -6,24 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     /* Reset & base */
-    * {
-      box-sizing: border-box;
-      margin: 0; padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #0a0a0a; /* sfondo molto scuro */
+      background-color: #0a0a0a;
       color: #e0e0e0;
       line-height: 1.6;
       scroll-behavior: smooth;
     }
-    a {
-      color: #4fc3f7; /* azzurro chiaro */
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
+    a { color: #4fc3f7; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
     /* Navbar fissa */
     nav {
       position: fixed;
@@ -56,26 +49,18 @@
       color: #4fc3f7;
       transition: color 0.3s ease;
     }
-    nav ul li:hover {
-      color: #81d4fa; /* azzurro più chiaro al passaggio */
-    }
-    nav ul li a {
-      color: inherit;
-      text-decoration: none;
-    }
+    nav ul li:hover { color: #81d4fa; }
+    nav ul li a { color: inherit; text-decoration: none; }
 
-    /* Padding per contenuto sotto navbar */
     main {
-      padding-top: 80px; /* spazio per navbar */
+      padding-top: 80px;
       max-width: 900px;
       margin: 0 auto 4rem;
       padding-left: 1rem;
       padding-right: 1rem;
     }
-    /* Sezioni */
-    section {
-      margin-bottom: 4rem;
-    }
+
+    section { margin-bottom: 4rem; }
     section h2 {
       font-size: 2rem;
       border-bottom: 3px solid #4fc3f7;
@@ -83,11 +68,9 @@
       margin-bottom: 1.5rem;
       font-weight: 700;
     }
+
     /* Experience */
-    .experience-list {
-      list-style: none;
-      padding-left: 0;
-    }
+    .experience-list { list-style: none; padding-left: 0; }
     .experience-list li {
       background: #121212;
       margin-bottom: 1rem;
@@ -97,38 +80,18 @@
       transition: background 0.3s ease, color 0.3s ease;
       color: #ddd;
     }
-    .experience-list li:hover {
-      background: #1b1b1b;
-    }
+    .experience-list li:hover { background: #1b1b1b; }
+    .role { font-weight: 700; font-size: 1.1rem; }
 
-    .role {
-      font-weight: 700;
-      font-size: 1.1rem;
-    }
-    /* Colori specifici per le parti dei server */
-    .icenetwork .part1 { color: #81d4fa; } /* Ice azzurro chiaro */
-    .icenetwork .part2 { color: #ffffff; } /* Network bianco */
+    /* Colori server */
+    .icenetwork .part1 { color: #81d4fa; } .icenetwork .part2 { color: #ffffff; }
+    .atlasmc .part1 { color: #81d4fa; } .atlasmc .part2 { color: #ffffff; }
+    .edenmine .part1 { color: #a5d6a7; } .edenmine .part2 { color: #ffffff; }
+    .evercraft .part1 { color: #81d4fa; } .evercraft .part2 { color: #ffffff; }
+    .coralmc .part1 { color: #81d4fa; } .coralmc .part2 { color: #ffffff; }
+    .auramc .part1 { color: #ce93d8; } .auramc .part2 { color: #ffffff; }
 
-    .atlasmc .part1 { color: #81d4fa; } /* Atlas azzurro chiaro */
-    .atlasmc .part2 { color: #ffffff; } /* MC bianco */
-
-    .edenmine .part1 { color: #a5d6a7; } /* Edenmine verde chiaro */
-    .edenmine .part2 { color: #ffffff; } /* Network bianco */
-
-    .evercraft .part1 { color: #81d4fa; } /* Ever azzurro chiaro */
-    .evercraft .part2 { color: #ffffff; } /* Craft bianco */
-
-    .coralmc .part1 { color: #81d4fa; } /* Coral azzurro chiaro */
-    .coralmc .part2 { color: #ffffff; } /* MC bianco */
-
-    .auramc .part1 { color: #ce93d8; } /* Aura viola chiaro */
-    .auramc .part2 { color: #ffffff; } /* MC bianco */
-
-    .duration {
-      font-style: italic;
-      color: #aaa;
-      margin-left: 0.3rem;
-    }
+    .duration { font-style: italic; color: #aaa; margin-left: 0.3rem; }
 
     /* Skills */
     .skills-list {
@@ -149,55 +112,31 @@
       user-select: none;
       transition: background 0.3s ease;
     }
-    .skills-list li:hover {
-      background: #4fc3f7;
-      color: #121212;
-    }
-    .skills-list li.active {
-      background: #4fc3f7;
-      color: #121212;
-      box-shadow: 0 0 10px 3px #4fc3f7;
-    }
+    .skills-list li:hover { background: #4fc3f7; color: #121212; }
+    .skills-list li.active { background: #4fc3f7; color: #121212; box-shadow: 0 0 10px 3px #4fc3f7; }
 
     /* Evidenziazioni server */
-    .experience-list li.active.auramc {
-      background-color: #6a4a8b; /* viola chiaro */
-      color: #eee;
-      box-shadow: 0 0 12px 3px #ce93d8;
-    }
-    .experience-list li.active.edenmine {
-      background-color: #7cbf82; /* verde chiaro */
-      color: #fff;
-      box-shadow: 0 0 12px 3px #a5d6a7;
-    }
+    .experience-list li.active.auramc { background-color: #6a4a8b; color: #eee; box-shadow: 0 0 12px 3px #ce93d8; }
+    .experience-list li.active.edenmine { background-color: #7cbf82; color: #fff; box-shadow: 0 0 12px 3px #a5d6a7; }
     .experience-list li.active.icenetwork,
     .experience-list li.active.atlasmc,
     .experience-list li.active.coralmc,
-    .experience-list li.active.evercraft {
-      background-color: #4fc3f7; /* azzurro chiaro */
-      color: #000;
-      box-shadow: 0 0 12px 3px #81d4fa;
-    }
+    .experience-list li.active.evercraft { background-color: #4fc3f7; color: #000; box-shadow: 0 0 12px 3px #81d4fa; }
 
-    /* Projects and Future Projects lists */
-    .projects-list, .future-projects-list {
-      list-style: none;
-      padding-left: 0;
+    /* Projects */
+    .projects-list { list-style: none; padding-left: 0; }
+    .projects-list li { 
+      background: #121212; margin-bottom: 1rem; padding: 1rem 1.5rem; border-radius: 6px; 
+      box-shadow: 0 2px 8px rgba(79,195,247,0.25); 
     }
-    .projects-list li, .future-projects-list li {
-      background: #121212;
-      margin-bottom: 1rem;
-      padding: 1rem 1.5rem;
-      border-radius: 6px;
-      box-shadow: 0 2px 8px rgba(79,195,247,0.25);
-      color: #ddd;
-      font-weight: 600;
-      line-height: 1.4;
-      transition: background 0.3s ease;
-    }
-    .projects-list li:hover, .future-projects-list li:hover {
-      background: #1b1b1b;
-      cursor: default;
+    .projects-list li a { font-weight: 700; }
+
+    /* Footer */
+    footer { text-align: center; padding: 2rem 1rem; background: #121212; color: #777; font-size: 0.9rem; margin-top: 3rem; }
+
+    @media(max-width: 600px) {
+      nav ul { gap: 1rem; }
+      main { padding-left: 0.5rem; padding-right: 0.5rem; }
     }
   </style>
 </head>
@@ -206,18 +145,17 @@
 <nav>
   <div class="logo">CallMeDen_</div>
   <ul>
-    <li><a href="#about">About</a></li>
+    <li><a href="#about">About Me</a></li>
     <li><a href="#core-skills">Core Skills</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#projects">Projects</a></li>
-    <li><a href="#future-projects">Future Projects</a></li>
   </ul>
 </nav>
 
 <main>
   <section id="about">
     <h2>About Me</h2>
-    <p>Experienced Minecraft staff member progressing from basic moderator to senior and manager roles in various Italian networks..</p>
+    <p>Experienced Minecraft staff member progressing from basic moderator to senior and manager roles in various Italian networks. Skilled in moderation, game mode management, plugin translation, and media team coordination.</p>
   </section>
 
   <section id="core-skills">
@@ -235,32 +173,26 @@
     <h2>Staff Experience</h2>
     <ul class="experience-list">
       <li class="icenetwork">
-        <span class="role"><span class="part1">Ice</span><span class="part2">Network</span></span>
-        – Helper Supporter → Moderator
+        <span class="role"><span class="part1">Ice</span><span class="part2">Network</span></span> – Helper Supporter → Moderator
         <span class="duration">(~3.5 months)</span>
       </li>
       <li class="atlasmc">
-        <span class="role"><span class="part1">Atlas</span><span class="part2">MC</span></span>
-        – Senior Helper & Logs Verified
+        <span class="role"><span class="part1">Atlas</span><span class="part2">MC</span></span> – Senior Helper & Logs Verified
         <span class="duration">(~3 months)</span>
       </li>
       <li class="edenmine">
-        <span class="role"><span class="part1">Edenmine</span> <span class="part2">Network</span></span>
-        – Trial Logs Verified
+        <span class="role"><span class="part1">Edenmine</span> <span class="part2">Network</span></span> – Trial Logs Verified
         <span class="duration">(~20 days)</span>
       </li>
       <li class="evercraft">
-        <span class="role"><span class="part1">Ever</span><span class="part2">Craft</span></span>
-        – Helper → Global Helper
+        <span class="role"><span class="part1">Ever</span><span class="part2">Craft</span></span> – Helper → Global Helper
       </li>
       <li class="coralmc">
-        <span class="role"><span class="part1">Coral</span><span class="part2">MC</span></span>
-        – Helper → Mod → Mod+ & Logs Verified
+        <span class="role"><span class="part1">Coral</span><span class="part2">MC</span></span> – Helper → Mod → Mod+ & Logs Verified
         <span class="duration">(~8 months)</span>
       </li>
       <li class="auramc">
-        <span class="role"><span class="part1">Aura</span><span class="part2">MC</span></span>
-        – Multiple Roles: Mod, Game Mode Manager, SrMod Media Manager
+        <span class="role"><span class="part1">Aura</span><span class="part2">MC</span></span> – Multiple Roles: Mod, Game Mode Manager, SrMod Media Manager
         <span class="duration">(~4–5 months)</span>
       </li>
     </ul>
@@ -270,16 +202,7 @@
     <h2>Projects</h2>
     <ul class="projects-list">
       <li>
-        <strong>VanillaMC</strong> – I worked mainly for this server as a Manager, overseeing the staff team and helping to coordinate game modes and events. It was a valuable experience growing leadership and management skills.
-      </li>
-    </ul>
-  </section>
-
-  <section id="future-projects">
-    <h2>Future Projects</h2>
-    <ul class="future-projects-list">
-      <li>
-        I aim to collaborate with major Minecraft servers, especially focusing on plugin development (Pluginner role), to contribute custom features and enhance gameplay experiences.
+        <strong><a href="files/luckperms-it.yml" download>LuckPerms in Italian</a></strong> – Translated the popular LuckPerms plugin into Italian. Players can download the full configuration and messages file to use directly on their servers.
       </li>
     </ul>
   </section>
@@ -296,17 +219,12 @@
 
   skillItems.forEach(skill => {
     skill.addEventListener('click', () => {
-      // Rimuovi evidenze precedenti
       skillItems.forEach(s => s.classList.remove('active'));
       experienceItems.forEach(e => e.classList.remove('active'));
 
-      // Attiva il skill cliccato
       skill.classList.add('active');
-
-      // Prendi i server associati (spazi separati)
       const servers = skill.dataset.servers.split(' ');
 
-      // Evidenzia i server giusti
       experienceItems.forEach(item => {
         servers.forEach(serverClass => {
           if(item.classList.contains(serverClass)) {
